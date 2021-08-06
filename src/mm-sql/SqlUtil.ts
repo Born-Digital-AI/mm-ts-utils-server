@@ -534,7 +534,7 @@ export class SqlUtil {
 
         let addons = this.buildAddons(options);
 
-        let sql = `SELECT ${fields} FROM ${this.qi(table)} ${where} ${addons}`;
+        let sql = `SELECT ${fields} FROM ${table} ${where} ${addons}`;
 
         // let { rows } = await this.query(sql, [], debug);
         // return rows;
@@ -556,7 +556,7 @@ export class SqlUtil {
             where = ` WHERE ${where}`;
         }
 
-        let sql = `SELECT COUNT(*) AS count FROM ${this.qi(table)} ${where}`;
+        let sql = `SELECT COUNT(*) AS count FROM ${table} ${where}`;
         // let { rows } = await this.query(sql, [], debug);
 
         // normalizujem do pg tvaru
@@ -574,7 +574,7 @@ export class SqlUtil {
      * @returns {Promise<any>}
      */
     async insert(table: string, data, debug = false) {
-        let sql = `INSERT INTO ${this.qi(table)} `;
+        let sql = `INSERT INTO ${table} `;
         let keys = [];
         let values = [];
 
@@ -612,7 +612,7 @@ export class SqlUtil {
      * @returns {Promise<any>}
      */
     async update(table: string, data, where, debug = false) {
-        let sql = `UPDATE ${this.qi(table)} SET `;
+        let sql = `UPDATE ${table} SET `;
         let pairs = [];
 
         Object.keys(data).forEach((k) => {
@@ -681,7 +681,7 @@ export class SqlUtil {
             addons = this.buildAddons(options);
         }
 
-        let sql = `DELETE FROM ${this.qi(table)} WHERE ${where} ${addons}`;
+        let sql = `DELETE FROM ${table} WHERE ${where} ${addons}`;
 
         return await this.query(sql, [], debug);
     }
