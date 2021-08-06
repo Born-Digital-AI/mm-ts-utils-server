@@ -1,6 +1,6 @@
 {
     "name": "mm-ts-utils-server",
-    "version": "1.0.7",
+    "version": "1.0.8",
     "description": "Personal ts server utils",
     "main": "dist/main.js",
     "types": "dist/main.d.ts",
